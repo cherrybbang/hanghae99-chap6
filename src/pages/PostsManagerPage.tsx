@@ -31,7 +31,7 @@ const PostsManager = () => {
   const location = useLocation()
   const queryParams = new URLSearchParams(location.search)
 
-  // 상태 관리
+  // 상태 관리 -> context api로 관리해보기
   const [posts, setPosts] = useState([])
   const [total, setTotal] = useState(0)
   const [skip, setSkip] = useState(parseInt(queryParams.get("skip") || "0"))
@@ -77,7 +77,7 @@ const PostsManager = () => {
       .then((response) => response.json())
       .then((data) => {
         postsData = data
-        return fetch("/api/users?limit=0&select=username,image")
+        return fetch("/api/users?limit=0&select=username,image")  // 이런 api 호출들은 심화에서 다뤄보기
       })
       .then((response) => response.json())
       .then((users) => {
