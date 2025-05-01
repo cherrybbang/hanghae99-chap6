@@ -10,6 +10,8 @@ interface PostsContextProps {
   setSelectedPost: React.Dispatch<React.SetStateAction<Post | null>>;
   selectedUser: User | null;
   setSelectedUser: React.Dispatch<React.SetStateAction<User | null>>;
+  selectedComment: Comment | null;
+  setSelectedComment: React.Dispatch<React.SetStateAction<Comment | null>>;
 }
 
 const PostsContext = createContext<PostsContextProps | undefined>(undefined);
@@ -19,10 +21,23 @@ export const PostsProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [comments, setComments] = useState<Record<number, Comment[]>>({});
   const [selectedPost, setSelectedPost] = useState<Post | null>(null);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const [selectedComment, setSelectedComment] = useState<Comment | null>(null);
+
 
   return (
     <PostsContext.Provider
-      value={{ posts, setPosts, comments, setComments, selectedPost, setSelectedPost, selectedUser, setSelectedUser }}
+      value={{
+        posts,
+        setPosts,
+        comments,
+        setComments,
+        selectedPost,
+        setSelectedPost,
+        selectedUser,
+        setSelectedUser,
+        selectedComment,
+        setSelectedComment,
+      }}
     >
       {children}
     </PostsContext.Provider>

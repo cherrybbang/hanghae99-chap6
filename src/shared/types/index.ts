@@ -8,7 +8,7 @@ export interface Post {
     likes: number;
     dislikes: number;
   };
-  author?: User;
+  author: User;
 }
 
 export interface User {
