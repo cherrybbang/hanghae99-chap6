@@ -77,7 +77,7 @@ const PostsManager = () => {
       .then((response) => response.json())
       .then((data) => {
         postsData = data
-        return fetch("/api/users?limit=0&select=username,image")
+        return fetch(`https://dummyjson.com/users?limit=0&select=username,image`)
       })
       .then((response) => response.json())
       .then((users) => {
