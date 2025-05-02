@@ -23,22 +23,22 @@ export const fetchUsers = async (): Promise<User[]> => {
 };
 
 export const fetchTags = async (): Promise<Tag[]> => {
-  const response = await fetch("/api/posts/tags");
+  const response = await fetch("https://dummyjson.com/posts/tags");
   return response.json();
 };
 
 export const searchPosts = async (query: string): Promise<{ posts: Post[]; total: number }> => {
-  const response = await fetch(`/api/posts/search?q=${query}`);
+  const response = await fetch(`https://dummyjson.com/posts/search?q=${query}`);
   return response.json();
 };
 
 export const fetchPostsByTag = async (tag: string): Promise<{ posts: Post[]; total: number }> => {
-  const response = await fetch(`/api/posts/tag/${tag}`);
+  const response = await fetch(`https://dummyjson.com/posts/tag/${tag}`);
   return response.json();
 };
 
 export const addPost = async (newPost: Omit<Post, "id">): Promise<Post> => {
-  const response = await fetch("/api/posts/add", {
+  const response = await fetch("https://dummyjson.com/posts/add", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(newPost),
@@ -47,7 +47,7 @@ export const addPost = async (newPost: Omit<Post, "id">): Promise<Post> => {
 };
 
 export const updatePost = async (post: Post): Promise<Post> => {
-  const response = await fetch(`/api/posts/${post.id}`, {
+  const response = await fetch(`https://dummyjson.com/posts/${post.id}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(post),
@@ -56,5 +56,5 @@ export const updatePost = async (post: Post): Promise<Post> => {
 };
 
 export const deletePost = async (id: number): Promise<void> => {
-  await fetch(`/api/posts/${id}`, { method: "DELETE" });
+  await fetch(`https://dummyjson.com/posts/${id}`, { method: "DELETE" });
 };
